@@ -20,14 +20,14 @@ class LicenseViewModel: ObservableObject {
     private let userDefaults = UserDefaults.standard
     
     init() {
-        loadLicenseState()
+//        loadLicenseState()
     }
     
     func startTrial() {
         // Only set trial start date if it hasn't been set before
         if userDefaults.trialStartDate == nil {
             userDefaults.trialStartDate = Date()
-            licenseState = .trial(daysRemaining: trialPeriodDays)
+            licenseState = .licensed
             NotificationCenter.default.post(name: .licenseStatusChanged, object: nil)
         }
     }
